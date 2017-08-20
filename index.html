@@ -6,7 +6,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title>GifTastic!!</title>
-	
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
@@ -19,13 +18,19 @@
 		<div class="row">
 			<div class="col-md-2 col-sm-4 col-xs-12" id="side-bar">
 				<!-- Form to add button -->
+				<form id="topic-form">
+			    	<label for="topic-input">Add a Topic</label>
+			    	<input type="text" id="topic-input"><br>
+
+			    	<!-- Button triggers new topic to be added -->
+			    	<input id="add-topic" type="submit" value="Add a Topic">
+			   </form>
 				
 				<!-- Buttons of items -->
-				<div id="btn-topics">
-					<ul id="btn-list">
-						<li>Item 1</li>
-					</ul>
-					
+				<div class="btn-group">
+					<h2>Choose a topic:</h2>
+					<div id="btn-list" style="display:grid">
+					</div>					
 				</div>
 			</div>
 			<div class="col-md-10 col-sm-8 col-xs-12" id="gif-content">
