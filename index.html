@@ -9,6 +9,7 @@
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Bungee+Shade|Roboto" rel="stylesheet">
 </head>
 <body>
 	<div class="container">
@@ -16,27 +17,27 @@
 			<h1>Fan-Giphy-Tastic!</h1>
 		</div>
 		<div class="row">
-			<div class="col-md-2 col-sm-4 col-xs-12" id="side-bar">
-				<!-- Form to add button -->
+			<div class="col-lg-2 col-md-2 col-sm-4 col-xs-12" id="side-bar">
+				<!-- Form to add button topic and button to trigger adding it-->
 				<form id="topic-form">
 			    	<label for="topic-input">Add a Topic</label>
 			    	<input type="text" id="topic-input"><br>
-
-			    	<!-- Button triggers new topic to be added -->
-			    	<input id="add-topic" type="submit" value="Add a Topic">
+			    	<input class="btn btn-default" id="add-topic" type="submit" value="Add a Topic">
 			   </form>
 				
-				<!-- Buttons of items -->
+				<!-- Button list of topics -->
 				<div class="btn-group">
-					<h2>Choose a topic:</h2>
-					<div id="btn-list" style="display:grid">
+					<h3>Choose a topic:</h3>
+					<div id="btn-list">
 					</div>					
 				</div>
 			</div>
-			<div class="col-md-10 col-sm-8 col-xs-12" id="gif-content">
-				
+
+			<!-- Gifs -->
+			<div class="col-lg-10 col-md-10 col-sm-8 col-xs-12" id="gif-content">
+				<p>Choose a topic on the left or create your own to see some gifs!</p>
 			</div>
-		</div>
+		</div> <!-- ./row -->
 	</div><!-- ./container -->
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
