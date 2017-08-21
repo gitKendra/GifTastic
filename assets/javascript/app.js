@@ -57,14 +57,29 @@ $(function(){ // .ready() handler
 		$(this).attr("src-alt", temp);
 	}
 
-	// Form input to add user-input topic to array
+	// onClick or Enter for form input to add user-input topic to array
 	$("#add-topic").on("click", function(event){
 		event.preventDefault();
 		let newTopic = $("#topic-input").val().trim();
-		topic.push(newTopic);
-		// remake buttons based on form input
-		renderButtons();
+		// Don't add topic if input is empty
+		if(newTopic === "" || topicExists(newTopic)) {
+			// Do nothing if user input nothing or an existing topic
+		}
+		else{
+			topic.push(newTopic);
+			renderButtons();
+		}
 	});
+
+	// Returns boolean if topic already exists in topic array
+	function topicExists(userInput){
+		for(var i = 0; i < topic.length; i++){
+			if(userInput === topic[i]){
+				return true;
+			}
+		}
+		return false;
+	}
 
 	// onClick functionality for topic buttons and gifs
 	$(document).on("click", ".btn-topic", displayGifs);

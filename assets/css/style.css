@@ -1,6 +1,7 @@
 body {
 	font-family: 'Roboto', sans-serif;
 	background: url(../images/memphis-colorful.png);
+	color: #333;
 }
 
 h1 {
@@ -9,7 +10,7 @@ h1 {
 }
 
 p {
-	color: #eee;
+	
 }
 
 #topic-form {
@@ -18,7 +19,6 @@ p {
 
 #topic-input {
 	width: 100%;
-	
 }
 
 #btn-list {
@@ -39,5 +39,4 @@ p {
 
 footer {
 	text-align: center;
-	
 }
