@@ -1,32 +1,39 @@
 body {
 	font-family: 'Roboto', sans-serif;
+	background: url(../images/background-13849_640.jpg);
+	background-size: cover;
 }
+
 h1 {
 	font-family: 'Bungee Shade', cursive;
+	font-weight: bold;
 }
-/*form {
-	margin-bottom: 10px; 
-}*/
-#topic-form{
+
+p {
+	color: white;
+}
+
+#topic-form {
 	max-width: 170px;
 }
+
 #topic-input {
 	width: 100%;
 	
 }
-/*https://www.w3schools.com/howto/howto_css_button_group_vertical.asp
-*/#btn-list {
+
+#btn-list {
 	display: grid;
-
 }
 
-.gif-div {
-	height: 200px;
+.thumbnail {
+	height: 242px;
 	min-width: 200px;
-	margin: 10px 10px 20px 10px;
+	margin: 10px;
 	float:left;
+	background-color: #fff;
 }
 
-.gif-div img{
+.gif {
 	max-height: 200px;
 }
