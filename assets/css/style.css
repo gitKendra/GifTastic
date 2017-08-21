@@ -1,7 +1,6 @@
 body {
 	font-family: 'Roboto', sans-serif;
-	background: url(../images/background-13849_640.jpg);
-	background-size: cover;
+	background: url(../images/memphis-colorful.png);
 }
 
 h1 {
@@ -10,7 +9,7 @@ h1 {
 }
 
 p {
-	color: white;
+	color: #eee;
 }
 
 #topic-form {
@@ -36,4 +35,9 @@ p {
 
 .gif {
 	max-height: 200px;
+}
+
+footer {
+	text-align: center;
+	
 }

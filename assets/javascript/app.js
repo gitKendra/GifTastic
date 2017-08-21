@@ -1,21 +1,19 @@
 $(function(){ // .ready() handler
-
-	const API = "https://api.giphy.com"
 	const APIKEY = "4b2610846efe448fa64e5bbfd561d517";
 
 	// Topics array
-	let topic = ["high five", "thumbs up", "clap", "shrug", "wink", "smh", "hugs", "bye", "hi", "dance", "sleepy"];
+	let topic = ["bye", "high five", "thumbs up", "clap", "shrug", "wink", "smh", "hugs", "dance", "sleepy", "hi"];
 
-	// Create and display buttons in alphabetical order on HTML
+	// Create and display buttons on HTML
 	function renderButtons() {
 		$("#btn-list").empty();
-		topic = topic.sort();
 		for(var i = 0; i < topic.length; i++){
 		  var btn = $("<button>");
 		  btn.addClass("btn btn-default btn-topic");
-		  btn.text(topic[i]);
+		  btn.text(topic[i]); 
 		  btn.val(topic[i]);
-		  $("#btn-list").append(btn);
+		  // use prepend so user input value is at top of list
+		  $("#btn-list").prepend(btn);
 		}
 	}
 
