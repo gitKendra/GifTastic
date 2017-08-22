@@ -4,74 +4,61 @@ $(function(){ // .ready() handler
 	// Topics array
 	let topic = ["bye", "high five", "thumbs up", "clap", "shrug", "wink", "smh", "hugs", "dance", "sleepy", "hi"];
 
-	// Create and display buttons on HTML
+	// Function to create and display buttons on HTML
 	function renderButtons() {
 		$("#btn-list").empty();
-		for(var i = 0; i < topic.length; i++){
-		  var btn = $("<button>");
-		  btn.addClass("btn btn-default btn-topic");
+		for(let i = 0; i < topic.length; i++){
+		  let btn = $("<button>").addClass("btn btn-default btn-topic");
 		  btn.text(topic[i]); 
 		  btn.val(topic[i]);
-		  // use prepend so user input value is at top of list
+		  // use prepend so most recent user input value is at top of button list
 		  $("#btn-list").prepend(btn);
 		}
 	}
 
-	// Updates HTML with the gifs of the selected topic
+	// Function that updates HTML with the gifs of the selected topic
 	function displayGifs(){
 		$("#gif-content").empty();
 		
 		// update search term with clicked button value
 		let searchTerm = $(this).val();
-		let queryURL = "https://api.giphy.com/v1/gifs/search?api_key="+APIKEY+"&q="+searchTerm+"&limit=10";
-	    
-	    // Call to the API to get content
+
+		// Query the api for selected content
+		let queryURL = "https://api.giphy.com/v1/gifs/search?api_key="+APIKEY+"&q="+searchTerm+"&limit=10";    
 	    $.ajax({
 	      url: queryURL,
 	      method: "GET"
-	    })
-	    .done(function(response) {
+	    }).done(function(response) {
 	    	let results = response.data;
-	    	// Loop through results array and add each gif and rating to HTML
-	    	for (var i = 0; i < results.length; i++){
-		        var gifDiv = $("<div>");
-		        gifDiv.addClass("thumbnail");
-		        var p = $("<p>");
-		        p.addClass("caption");
-		        p.text("Rating: " + results[i].rating);
-		        var gifImage = $("<img>");
-		        gifImage.addClass("gif");
+
+	    	// Loop through results array and construct HTML containing gifs
+	    	for (let i = 0; i < results.length; i++){
+	    		// Create Div to store elements of gif to be displayed
+		        let gifDiv = $("<div>").addClass("thumbnail");
+
+		        // Create p element to store the rating from API
+		        let p = $("<p>").addClass("caption").text("Rating: " + results[i].rating);
+
+		        // Create image element to store the still and animated gif url from API
+		        let gifImage = $("<img>").addClass("gif");
 		        gifImage.attr("src", results[i].images.fixed_width_still.url);
 		        gifImage.attr("src-alt", results[i].images.fixed_width.url);
-		        gifDiv.append(gifImage);
-		        gifDiv.append(p);
+
+		        // Attach image and paragraph elements to the gifDiv and then to gif-content of HTML
+		        gifDiv.append(gifImage).append(p);
 		        $("#gif-content").prepend(gifDiv);
 	    	};
 	    });
 	}
 
-	// Toggles the source of the image between still and animated
+	// Function that toggles the source of the image between still and animated
 	function togglePlay(){
-		var temp = $(this).attr("src");
+		let temp = $(this).attr("src");
 		$(this).attr("src", $(this).attr("src-alt"));
 		$(this).attr("src-alt", temp);
 	}
 
-	// onClick or Enter for form input to add user-input topic to array
-	$("#add-topic").on("click", function(event){
-		event.preventDefault();
-		let newTopic = $("#topic-input").val().trim();
-		// Don't add topic if input is empty
-		if(newTopic === "" || topicExists(newTopic)) {
-			// Do nothing if user input nothing or an existing topic
-		}
-		else{
-			topic.push(newTopic);
-			renderButtons();
-		}
-	});
-
-	// Returns boolean if topic already exists in topic array
+	// Function that returns true if topic already exists in topic array. False, otherwise.
 	function topicExists(userInput){
 		for(var i = 0; i < topic.length; i++){
 			if(userInput === topic[i]){
@@ -81,7 +68,20 @@ $(function(){ // .ready() handler
 		return false;
 	}
 
-	// onClick functionality for topic buttons and gifs
+	// Event handler for user adding a topic from the form input
+	$("#add-topic").on("click", function(event){
+		// Prevent button from submitting the form
+		event.preventDefault();
+		let newTopic = $("#topic-input").val().trim();
+		
+		// Only add topic if it doesn't already exist or isn't empty
+		if(newTopic !== "" && !topicExists(newTopic)) {
+			topic.push(newTopic);
+			renderButtons();
+		}
+	});
+
+	// Delegated event handlers for displaying and playing gifs
 	$(document).on("click", ".btn-topic", displayGifs);
 	$(document).on("click", ".gif", togglePlay);
 
